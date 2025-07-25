@@ -20,6 +20,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -53,6 +55,8 @@ fun registerScreen(navController: NavController){
     var password by remember { mutableStateOf("") }
     var confirmpassword  by remember { mutableStateOf("") }
     val authViewModel: AuthViewModel = viewModel()
+    var fullname by remember { mutableStateOf("") }
+
     Box(){
         Image(painter = painterResource(id = R.drawable.pexels),
             contentDescription = "register background",
@@ -79,39 +83,57 @@ fun registerScreen(navController: NavController){
         )
         OutlinedTextField(value = username,
             onValueChange = {username=it},
-            label = { Text("Enter Username") },
-            placeholder = {Text("Please enter username")},
+            label = { Text("Enter Username", ) },
+            textStyle = TextStyle(color = Color.Blue),
+            placeholder = {Text("Please enter username",)},
             leadingIcon = { Icon(Icons.Default.Person, contentDescription = "Person icon") },
-            modifier = Modifier.fillMaxWidth(0.8f)
+            modifier = Modifier.fillMaxWidth(0.8f),
+
+
+
         )
+        OutlinedTextField(value = fullname,
+            onValueChange = {fullname=it},
+            label = { Text("Enter Fullname", ) },
+            textStyle = TextStyle(color = Color.Blue),
+            placeholder = {Text("Please enter Fullname",)},
+            leadingIcon = { Icon(Icons.Default.Person, contentDescription = "Person icon") },
+            modifier = Modifier.fillMaxWidth(0.8f),
+
+
+
+            )
         OutlinedTextField(value = email,
             onValueChange = {email=it},
-            label = { Text("Enter email") },
-            placeholder = { Text("Please enter email") },
+            label = { Text("Enter email", ) },
+            placeholder = { Text("Please enter email", ) },
             leadingIcon = { Icon(Icons.Default.Email, contentDescription = "Email icon") },
             modifier = Modifier.fillMaxWidth(0.8f),
+            textStyle = TextStyle(color = Color.Blue),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
 
         )
         OutlinedTextField(value = password,
             onValueChange = {password=it},
-            label = { Text("Enter password") },
-            placeholder = {Text("Please input your password")},
+            label = { Text("Enter password",) },
+            placeholder = {Text("Please input your password",)},
             leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "Password icon") },
+            textStyle = TextStyle(color = Color.Blue),
             modifier = Modifier.fillMaxWidth(0.8f),
             visualTransformation = PasswordVisualTransformation(),
         )
         OutlinedTextField(value = confirmpassword ,
             onValueChange = {confirmpassword=it},
-            label = { Text("Confirm password") },
-            placeholder = { Text("Please confirm password") },
+            label = { Text("Confirm password",) },
+            placeholder = { Text("Please confirm password", ) },
+            textStyle = TextStyle(color = Color.Blue),
             leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "Confirmation") },
             modifier = Modifier.fillMaxWidth(0.8f),
         )
         Spacer(modifier = Modifier.height(10.dp))
         val context = LocalContext.current
         Button(onClick = {
-            authViewModel.signup(username = username, email= email,password=password,confirmpassword=confirmpassword,navController=navController, context = context)
+            authViewModel.signup(username = username, fullname = fullname, email= email,password=password,confirmpassword=confirmpassword,navController=navController, context = context)
         }, colors = ButtonDefaults.buttonColors(Color.LightGray),
             modifier = Modifier.fillMaxWidth())
         { Text(text = "REGISTER", color = Color.Blue)}
