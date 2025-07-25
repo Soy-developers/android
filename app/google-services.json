@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "113634010864",
+    "project_id": "taytay-77197",
+    "storage_bucket": "taytay-77197.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113634010864:android:b6cecf6fbd6dc80023c435",
+        "android_client_info": {
+          "package_name": "com.example.taytay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgjh5SbGhaU2MJbJEkX_rhSVX5QS6zTQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
